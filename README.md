@@ -1,6 +1,7 @@
-==Mage Kit Client==
+# Mage Kit Client
 
-===Development===
+## Development
+
 1. Clone repo
 2. Run npm install
 3. Run npm start
