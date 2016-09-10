@@ -1,0 +1,77 @@
+body, #root, .root-container{
+    height: 100%;
+}
+
+.tabs {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden
+}
+
+.tabs li {
+    float:left;
+}
+
+.tabs li a {
+    display:block;
+    padding:8px 16px
+}
+
+.tabs li a:hover {
+    color:#000;
+    background-color:#ccc
+}
+
+.col-1 { width: 4.66666666667%;}
+.col-2 { width: 13.3333333333%;}
+.col-3 { width: 22%;}
+.col-4 { width: 30.6666666667%;}
+.col-5 { width: 39.3333333333%;}
+.col-6 { width: 48%;}
+.col-7 { width: 56.6666666667%;}
+.col-8 { width: 65.3333333333%;}
+.col-9 { width: 74.0%;}
+.col-10 { width: 82.6666666667%;}
+.col-11 { width: 91.3333333333%;}
+.col-12 { width: 100%; margin-left: 0;}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12{
+  float: left;
+  box-sizing: border-box;
+    border: 1px solid red;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+input {
+  border: 2pt solid lightgrey;
+  padding: 4pt;
+  width: 100%;
+  max-width: 400pt;
+  height: 42pt;
+  font-size: 22pt;
+}
+
+.main-menu-holder {
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  padding-bottom:4pt;
+}
+
+.codex-search-holder {
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  margin-top: 24pt;
+  padding-bottom:4pt;
+}
+
+.codex-list-item {
+  padding: 4pt;
+}
