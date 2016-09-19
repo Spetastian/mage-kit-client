@@ -4,11 +4,11 @@ import React from "react"
 export default class Spell extends React.Component {
 
         render (){
-          let spell = this.props.spell
-          let schools = spell.schools.map((school) => {
+          const spell = this.props.spell
+          const schools = spell.schools.map((school) => {
             return <span>{" "+school.operator+" "}{school.name} ({school.level})</span>
           })
-          return <div>
+          return <div className="spell-card">
             <div>
               <span>{spell.name} - </span>
               <span>{spell.type} - </span>
