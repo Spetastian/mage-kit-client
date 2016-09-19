@@ -11,8 +11,8 @@ export default class SpellService {
 
   getSpells(filter = {limit: 10, searchText: null}){
     assert(filter.limit)
+    
     const spellsUrl = `${StandardBaseUrl}/spells?limit=${filter.limit}&searchText=${filter.searchText}`
-    console.log(spellsUrl)
     return fetch(spellsUrl)
           .then(res => {
               if(!res.ok)

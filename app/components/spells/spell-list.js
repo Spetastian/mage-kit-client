@@ -6,13 +6,15 @@ export default class SpellList extends React.Component {
 
   render (){
 
-    let spellList = this.props.spells.map((spell)=>{
-      return <Spell
+    const spellList = this.props.spells.map((spell)=>{
+      return <div className="spell-container col-3">
+              <Spell
                 key={spell.id}
                 spell={spell}
                 />
+              </div>
     })
 
-    return  <div>{spellList}</div>
+    return  <div className="row">{spellList}</div>
   }
 }
