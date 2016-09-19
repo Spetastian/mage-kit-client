@@ -1,5 +1,6 @@
-let express = require('express')
-let router = express.Router()
+const express = require('express')
+const router = express.Router()
+const assert = require('assert')
 const codexList = require('../data/codex/codex-data')
 const attacks = require('../data/spells/attacks')
 const conjurations = require('../data/spells/conjurations')
@@ -7,6 +8,7 @@ const creatures = require('../data/spells/creatures')
 const incantations = require('../data/spells/incantations')
 const StandardResultLimit = 10;
 const checksum = "abc123"
+
 
 router.get("/spells", (req, res) => {
 
@@ -20,6 +22,7 @@ router.get("/spells", (req, res) => {
 })
 
 router.get("/codex", (req, res) => {
+  assert(req.query.checksum)
 
   const checksumParam = req.query.checksum
   let hasChanged = false
