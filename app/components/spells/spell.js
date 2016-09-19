@@ -8,6 +8,7 @@ export default class Spell extends React.Component {
           const schools = spell.schools.map((school) => {
             return <span>{" "+school.operator+" "}{school.name} ({school.level})</span>
           })
+          
           return <div className="thumbnail spell-card">
             <div>
               <span>{spell.name} - </span>
