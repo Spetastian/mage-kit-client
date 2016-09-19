@@ -15,10 +15,10 @@ express()
     .use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
     .use(webpackHotMiddleware(compiler))
     .use(bodyParser.json())
+    .use("/api", apiRoutes)
     .get("/codex|spells|spellbooks", (req, res) => {
       res.sendFile(__dirname + '/static/index.html')
     })
-    .use("/api", apiRoutes)
     .listen(port, () => {
         console.info("==> Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
     })
