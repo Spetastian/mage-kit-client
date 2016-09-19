@@ -6,16 +6,19 @@ const attacks = require('../data/spells/attacks')
 const conjurations = require('../data/spells/conjurations')
 const creatures = require('../data/spells/creatures')
 const incantations = require('../data/spells/incantations')
-const StandardResultLimit = 10;
+const StandardResultLimit = 10
 const checksum = "abc123"
 
+router.get("/test", (req, res) => {
+  res.send("HEJ")
+})
 
 router.get("/spells", (req, res) => {
 
-  const limit = req.query.limit || StandardResultLimit;
+  const limit = req.query.limit || StandardResultLimit
   const searchText = req.query.searchText || ''
 
-  res.json([...attacks, ...conjurations, ...creatures, ...incantations]
+  res.json([ ...attacks, ...conjurations, ...creatures, ...incantations]
     .filter((spell, index) => {
       return ((spell.name.toLowerCase().startsWith(searchText.toLowerCase()) || searchText === '') && index < limit)
     }))
