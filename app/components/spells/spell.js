@@ -24,7 +24,6 @@ export default class Spell extends React.Component {
               <span>Range: {spell.range[0]} - {spell.range[1]}</span><br/>
               <span>Target: {spell.target}</span><br/>
             </div>
-            <br/>
           </div>
         }
 }
