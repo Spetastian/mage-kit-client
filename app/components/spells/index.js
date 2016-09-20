@@ -16,19 +16,19 @@ class Spells extends React.Component {
   }
 
   componentDidMount() {
-      this.props.actions.fetchSpellsRequest(this.props.spells.filter)
+    this.props.actions.fetchSpellsRequest(this.props.spells.filter)
   }
 
   handleSpellSearch(filter = {}) {
-      this.props.actions.fetchSpellsRequest(filter)
+    this.props.actions.fetchSpellsRequest(filter)
   }
 
   render (){
-      return  <div>
+    return <div>
       <p>Spells</p>
       <Filter filter={this.props.spells.filter} onSearch={this.handleSpellSearch}/>
       <SpellList spells={this.props.spells.result} />
-      </div>
+    </div>
   }
 }
 
