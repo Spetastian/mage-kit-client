@@ -7,10 +7,14 @@ import {
     FETCH_SPELLS_STARTED,
     FETCH_SPELLS_SUCCESS,
     FETCH_SPELLS_FAILURE,
+    FETCH_SPELLBOOKS_STARTED,
+    FETCH_SPELLBOOKS_SUCCESS,
+    FETCH_SPELLBOOKS_FAILURE,
 } from './action-types'
 
 import CodexService from '../../services/codex-service'
 import SpellService from '../../services/spell-service'
+import SpellbookService from '../../services/spellbook-service'
 import ClientCache from '../../utils/client-cache'
 const clientCache = new ClientCache()
 
@@ -45,6 +49,15 @@ export default function create(codexService = new CodexService(clientCache), spe
         return spellService.getSpells(filter)
           .then(result => dispatch(fetchSpellsSuccess(result)))
           .catch(ex => dispatch(fetchSpellsFailure(ex)))
+      }
+    },
+
+    fetchSpellbooksRequest(filter = {}){
+      return dispatch => {
+        dispatch(fetchSpellbooksStarted())
+        return spellbookService.getSpellbooks(filter)
+          .then(result => dispatch(fetchSpellbooksSuccess(result)))
+          .catch(ex => dispatch(fetchSpellbooksFailure(ex)))
       }
     }
   }

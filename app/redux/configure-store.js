@@ -5,11 +5,13 @@ import logger from 'redux-logger'
 import {combineReducers} from 'redux-immutable';
 import codexReducer from './reducers/codex-reducer'
 import spellsReducer from './reducers/spells-reducer'
+import spellbooksReducer from './reducers/spellbooks-reducer'
 import routerReducer from './reducers/router-reducer'
 
 const rootReducer = combineReducers({
   codex: codexReducer,
   spells: spellsReducer,
+  spellbooks: spellbooksReducer,
   routing: routerReducer
 })
 

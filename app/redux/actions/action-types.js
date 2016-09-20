@@ -7,7 +7,12 @@ export const FETCH_CODEX_FAILURE = 'mage-kit-client@FETCH_CODEX_FAILURE'
 export const SEARCH_CODEX_SUCCESS = 'mage-kit-client@SEARCH_CODEX_SUCCESS'
 export const SEARCH_CODEX_FAILURE = 'mage-kit-client@SEARCH_CODEX_FAILURE'
 
-//Fetch codex async API call actions
+//Fetch spells async API call actions
 export const FETCH_SPELLS_STARTED = 'mage-kit-client@FETCH_SPELLS_STARTED'
 export const FETCH_SPELLS_SUCCESS = 'mage-kit-client@FETCH_SPELLS_SUCCESS'
 export const FETCH_SPELLS_FAILURE = 'mage-kit-client@FETCH_SPELLS_FAILURE'
+
+//Fetch spellbooks async API call actions
+export const FETCH_SPELLBOOKS_STARTED = 'mage-kit-client@FETCH_SPELLBOOKS_STARTED'
+export const FETCH_SPELLBOOKS_SUCCESS = 'mage-kit-client@FETCH_SPELLBOOKS_SUCCESS'
+export const FETCH_SPELLBOOKS_FAILURE = 'mage-kit-client@FETCH_SPELLBOOKS_FAILURE'

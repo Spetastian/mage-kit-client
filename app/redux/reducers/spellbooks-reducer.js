@@ -1,8 +1,8 @@
 import {List, Map, fromJS} from 'immutable'
 import {
-    FETCH_SPELLS_STARTED,
-    FETCH_SPELLS_SUCCESS,
-    FETCH_SPELLS_FAILURE,
+    FETCH_SPELLBOOKS_STARTED,
+    FETCH_SPELLBOOKS_SUCCESS,
+    FETCH_SPELLBOOKS_FAILURE,
 } from '../actions/action-types'
 
 const initialState = fromJS({
@@ -11,29 +11,24 @@ const initialState = fromJS({
     fail: false,
     filter: {
       searchText: '',
-      spellTypes:
-        [
-          {value: "conjurations", selected: false},
-          {value: "attacks", selected: false}
-        ],
       limit: 10
     },
     result: []
 })
 
-const spellsReducer = (state = initialState, action) => {
+const spellbooksReducer = (state = initialState, action) => {
     switch (action.type){
-      case FETCH_SPELLS_STARTED:
+      case FETCH_SPELLBOOKS_STARTED:
           return state.set('fetching', true)
 
-      case FETCH_SPELLS_SUCCESS:
+      case FETCH_SPELLBOOKS_SUCCESS:
           return state.withMutations(state => {
               state.set('fetching', false)
               state.set('ready', true)
               state.set('result', fromJS(action.result))
           })
 
-      case FETCH_SPELLS_FAILURE:
+      case FETCH_SPELLBOOKS_FAILURE:
           return state.withMutations(state => {
               state.set('fetching', false)
               state.set('fail', true)
@@ -43,4 +38,4 @@ const spellsReducer = (state = initialState, action) => {
     return state
 }
 
-export default spellsReducer
+export default spellbooksReducer
