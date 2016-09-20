@@ -9,7 +9,7 @@ export default class SpellbookService {
     this.cache = cache
   }
 
-  getSpells(filter = {limit: 10, searchText: null}){
+  getSpellbooks(filter = {limit: 10, searchText: null}){
     assert(filter.limit)
 
     const spellbooksUrl = `${StandardBaseUrl}/spellbooks?limit=${filter.limit}&searchText=${filter.searchText}`
@@ -20,6 +20,12 @@ export default class SpellbookService {
 
                 return res.json()
           })
+  }
+
+  createNewSpellbook(){
+
+    const spellbooksUrl = `${StandardBaseUrl}/spellbooks/create`
+
   }
 
 }
