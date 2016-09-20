@@ -10,6 +10,9 @@ import {
     FETCH_SPELLBOOKS_STARTED,
     FETCH_SPELLBOOKS_SUCCESS,
     FETCH_SPELLBOOKS_FAILURE,
+    CREATE_NEW_SPELLBOOK_STARTED,
+    CREATE_NEW_SPELLBOOK_SUCCESS,
+    CREATE_NEW_SPELLBOOK_FAILURE,
 } from './action-types'
 
 import CodexService from '../../services/codex-service'
@@ -18,7 +21,11 @@ import SpellbookService from '../../services/spellbook-service'
 import ClientCache from '../../utils/client-cache'
 const clientCache = new ClientCache()
 
-export default function create(codexService = new CodexService(clientCache), spellService = new SpellService(clientCache)){
+export default function create(
+  codexService = new CodexService(clientCache),
+  spellService = new SpellService(clientCache),
+  spellbookService = new SpellbookService(clientCache)){
+
   return {
     initCodexDataRequest(){
       return dispatch => {
@@ -59,6 +66,15 @@ export default function create(codexService = new CodexService(clientCache), spe
           .then(result => dispatch(fetchSpellbooksSuccess(result)))
           .catch(ex => dispatch(fetchSpellbooksFailure(ex)))
       }
+    },
+
+    createNewSpellbookRequest(){
+      return dispatch => {
+        dispatch(createNewSpellbookStarted())
+        return spellbookService.createNewSpellbook()
+          .then(result => dispatch(createNewSpellbookSuccess(result)))
+          .catch(ex => dispatch(createNewSpellbookFailure(ex)))
+      }
     }
   }
 }
@@ -96,4 +112,30 @@ function fetchSpellsSuccess(result) {
 
 function fetchSpellsFailure(error) {
   return {type: FETCH_SPELLS_FAILURE, error: error}
+}
+
+//Fetch spellbooks async private action creators
+function fetchSpellbooksStarted() {
+  return {type: FETCH_SPELLBOOKS_STARTED}
+}
+
+function fetchSpellbooksSuccess(result) {
+  return {type: FETCH_SPELLBOOKS_SUCCESS, result: result}
+}
+
+function fetchSpellbooksFailure(error) {
+  return {type: FETCH_SPELLBOOKS_FAILURE, error: error}
+}
+
+//Create new spellbook async private action creators
+function createNewSpellbookStarted() {
+  return {type: CREATE_NEW_SPELLBOOK_STARTED}
+}
+
+function createNewSpellbookSuccess(result) {
+  return {type: CREATE_NEW_SPELLBOOK_SUCCESS, result: result}
+}
+
+function createNewSpellbookFailure(error) {
+  return {type: CREATE_NEW_SPELLBOOK_FAILURE, error: error}
 }

@@ -16,3 +16,8 @@ export const FETCH_SPELLS_FAILURE = 'mage-kit-client@FETCH_SPELLS_FAILURE'
 export const FETCH_SPELLBOOKS_STARTED = 'mage-kit-client@FETCH_SPELLBOOKS_STARTED'
 export const FETCH_SPELLBOOKS_SUCCESS = 'mage-kit-client@FETCH_SPELLBOOKS_SUCCESS'
 export const FETCH_SPELLBOOKS_FAILURE = 'mage-kit-client@FETCH_SPELLBOOKS_FAILURE'
+
+//Create new spellbook async API call actions
+export const CREATE_NEW_SPELLBOOK_STARTED = 'mage-kit-client@CREATE_NEW_SPELLBOOK_STARTED'
+export const CREATE_NEW_SPELLBOOK_SUCCESS = 'mage-kit-client@CREATE_NEW_SPELLBOOK_SUCCESS'
+export const CREATE_NEW_SPELLBOOK_FAILURE = 'mage-kit-client@CREATE_NEW_SPELLBOOK_FAILURE'
