@@ -1,5 +1,9 @@
 import assert from 'assert'
 const StandardBaseUrl = process.env.API_BASE_URL || '/api'
+const EmptySpellbook = {
+  name: '',
+  wizard: '',
+}
 
 export default class SpellbookService {
 
@@ -24,8 +28,14 @@ export default class SpellbookService {
 
   createNewSpellbook(){
 
-    const spellbooksUrl = `${StandardBaseUrl}/spellbooks/create`
+    const createNewspellbookUrl = `${StandardBaseUrl}/spellbooks`
+    return fetch(createNewspellbookUrl, { method: 'POST', body: JSON.stringify(EmptySpellbook) })
+          .then(res => {
+              if(!res.ok)
+                throw new Error("Error fetching Spellbooks from api")
 
+                return res.json()
+          })
   }
 
 }
