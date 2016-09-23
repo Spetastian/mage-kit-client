@@ -28,6 +28,7 @@ const codexReducer = (state = initialState, action) => {
           })
 
       case FETCH_CODEX_FAILURE:
+      case SEARCH_CODEX_FAILURE:
           return state.withMutations(state => {
               state.set('fetching', false)
               state.set('fail', true)
