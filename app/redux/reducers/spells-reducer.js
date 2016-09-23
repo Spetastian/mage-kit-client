@@ -21,7 +21,7 @@ const initialState = fromJS({
     result: []
 })
 
-const codexReducer = (state = initialState, action) => {
+const spellsReducer = (state = initialState, action) => {
     switch (action.type){
       case FETCH_SPELLS_STARTED:
           return state.set('fetching', true)
@@ -43,4 +43,4 @@ const codexReducer = (state = initialState, action) => {
     return state
 }
 
-export default codexReducer
+export default spellsReducer
