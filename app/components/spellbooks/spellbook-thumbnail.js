@@ -4,7 +4,7 @@ import React from "react"
 export default class SpellbookThumbnail extends React.Component {
 
         render (){
-          return <div className="spellbook-thumbnail">
+          return <div className="thumbnail spellbook">
             <div>
               <span>{this.props.title} - </span>
             </div>

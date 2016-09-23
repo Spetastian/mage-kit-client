@@ -75,13 +75,13 @@ input {
   padding: 4pt;
 }
 
-.spell-card {
+.thumbnail {
   border: 1px solid lightgray;
   min-width: 80pt;
   min-height: 160pt;
   padding:8pt;
 }
 
-.spell-container {
+.thumbnail-container {
   padding:4pt;
 }

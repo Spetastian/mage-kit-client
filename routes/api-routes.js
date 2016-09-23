@@ -9,15 +9,15 @@ const incantations = require('../data/spells/incantations')
 const StandardResultLimit = 10
 const checksum = "abc123"
 
-const spellbooks = [
-  {name: "Facemelter", mage: "Adramelech warlock", totalMana: 118},
-  {name: "Windwalker", mage: "Wizard, wind", totalMana: 120},
-  {name: "Battle druid", mage: "Druid", totalMana: 119},
-]
+function *idMaker(){
+  var index = 0;
+  while(true)
+    yield index++;
+}
 
-router.get("/test", (req, res) => {
-  res.send("HEJ")
-})
+const idGenerator = idMaker()
+
+const spellbooks = []
 
 router.get("/spellbooks", (req, res) => {
 
@@ -28,6 +28,18 @@ router.get("/spellbooks", (req, res) => {
     .filter((spellbook, index) => {
       return ((spellbook.name.toLowerCase().startsWith(searchText.toLowerCase()) || searchText === '') && index < limit)
     }))
+})
+
+router.post("/spellbooks", (req, res) => {
+  const newSpellbook = {
+    id : 4,
+    name : "",
+    mage : "",
+    totalMana : 0
+  }
+
+  spellbooks.push(newSpellbook)
+  res.json(newSpellbook)
 })
 
 router.get("/spells", (req, res) => {
