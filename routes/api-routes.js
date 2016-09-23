@@ -9,6 +9,7 @@ const incantations = require('../data/spells/incantations')
 const StandardResultLimit = 10
 const checksum = "abc123"
 
+<<<<<<< HEAD
 function *idMaker(){
   var index = 0;
   while(true)
@@ -40,6 +41,10 @@ router.post("/spellbooks", (req, res) => {
 
   spellbooks.push(newSpellbook)
   res.json(newSpellbook)
+=======
+router.get("/test", (req, res) => {
+  res.send("HEJ")
+>>>>>>> master
 })
 
 router.get("/spells", (req, res) => {
