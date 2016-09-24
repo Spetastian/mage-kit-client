@@ -7,9 +7,9 @@ import {
     FETCH_SPELLS_FAILURE,
 } from '../../../app/redux/actions/action-types'
 
-describe('spells reducer tests: ', function() {
+describe('spells reducer tests:', function() {
 
-  describe('reducer receives the fetch started action', function(){
+  describe('reducer receives the fetch started action:', function(){
     const currentState = fromJS({
         fetching: false,
         ready: false,
@@ -32,7 +32,7 @@ describe('spells reducer tests: ', function() {
     })
   })
 
-  describe('reducer receives the fetch success action', function(){
+  describe('reducer receives the fetch success action:', function(){
     const currentState = fromJS({
         fetching: true,
         ready: false,
@@ -55,7 +55,7 @@ describe('spells reducer tests: ', function() {
     })
   })
 
-  describe('reducer receives the fetch failure action', function(){
+  describe('reducer receives the fetch failure action:', function(){
       const currentState = fromJS({
           fetching: true,
           ready: false,

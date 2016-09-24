@@ -35,7 +35,7 @@ router.post("/spellbooks", (req, res) => {
     id : 4,
     name : "",
     mage : "",
-    totalMana : 0
+    totalPoints : 0
   }
 
   spellbooks.push(newSpellbook)

@@ -9,8 +9,9 @@ import {
     SEARCH_CODEX_FAILURE,
 } from '../../../app/redux/actions/action-types'
 
-describe('codex reducer tests', function() {
-  describe('reducer receives the fetch started action', function(){
+describe('codex reducer tests:', function() {
+  
+  describe('reducer receives the fetch started action:', function(){
     const currentState = fromJS({
         fetching: false,
         ready: false,
@@ -33,7 +34,7 @@ describe('codex reducer tests', function() {
     })
   })
 
-  describe('reducer receives the fetch success action', function(){
+  describe('reducer receives the fetch success action:', function(){
     const currentState = fromJS({
         fetching: true,
         ready: false,
@@ -57,7 +58,7 @@ describe('codex reducer tests', function() {
 
   })
 
-  describe('reducer receives the fetch failure action', function(){
+  describe('reducer receives the fetch failure action:', function(){
       const currentState = fromJS({
           fetching: true,
           ready: false,
@@ -80,7 +81,7 @@ describe('codex reducer tests', function() {
     })
   })
 
-  describe('reducer receives the search success action', function(){
+  describe('reducer receives the search success action:', function(){
       const currentState = fromJS({
           fetching: false,
           ready: true,
@@ -99,7 +100,7 @@ describe('codex reducer tests', function() {
     })
   })
 
-  describe('reducer receives the search failure action', function(){
+  describe('reducer receives the search failure action:', function(){
       const currentState = fromJS({
           fetching: false,
           ready: true,
