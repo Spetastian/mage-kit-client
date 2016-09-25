@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "start-dev": "API_BASE_URL=/api node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require babel-register --recursive",
+    "test:watch": "npm test -- --watch"
   },
   "author": "Sebastian Lindström",
   "license": "MIT",
@@ -31,9 +32,15 @@
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.9.1",
-    "babel-loader": "^6.2.4",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.14.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "redux-mock-store": "^1.2.1",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"

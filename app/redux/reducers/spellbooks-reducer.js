@@ -13,10 +13,6 @@ const initialState = fromJS({
     creating: false,
     ready: false,
     fail: false,
-    filter: {
-      searchText: '',
-      limit: 10
-    },
     result: []
 })
 
@@ -49,7 +45,7 @@ const spellbooksReducer = (state = initialState, action) => {
           state.set('result', state.get('result').push(action.result))
         })
 
-      case FETCH_SPELLBOOKS_FAILURE:
+      case CREATE_NEW_SPELLBOOK_FAILURE:
         return state.withMutations(state => {
             state.set('creating', false)
             state.set('fail', true)

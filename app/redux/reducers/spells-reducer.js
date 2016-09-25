@@ -10,7 +10,6 @@ const initialState = fromJS({
     ready: false,
     fail: false,
     filter: {
-      searchText: '',
       spellTypes:
         [
           {value: "conjurations", selected: false},
