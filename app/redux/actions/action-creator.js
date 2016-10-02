@@ -1,4 +1,8 @@
 import {
+    LOGIN_STARTED,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    USER_REQUIRE_AUTH,
     FETCH_CODEX_STARTED,
     FETCH_CODEX_SUCCESS,
     FETCH_CODEX_FAILURE,
@@ -18,21 +22,38 @@ import {
 import CodexService from '../../services/codex-service'
 import SpellService from '../../services/spell-service'
 import SpellbookService from '../../services/spellbook-service'
+import AuthService from '../../services/auth-service'
 import ClientCache from '../../utils/client-cache'
 const clientCache = new ClientCache()
 
 export default function create(
   codexService = new CodexService(clientCache),
   spellService = new SpellService(clientCache),
-  spellbookService = new SpellbookService(clientCache)){
+  spellbookService = new SpellbookService(clientCache),
+  authService = new AuthService(clientCache)){
 
   return {
+    loginRequest(username, password){
+      return dispatch => {
+        dispatch(loginStarted())
+        return authService.authenticate(username, password)
+          .then(result => {
+            dispatch(loginSuccess())
+          })
+          .catch(err => dispatch(loginFailure(err)))
+      }
+    },
+
+    promptAuthentication(){
+      dispatch(requireUserAuth())
+    },
+
     initCodexDataRequest(){
       return dispatch => {
         dispatch(fetchCodexStarted())
         return codexService.initCodexData()
           .then(() => {return codexService.getCodex()})
-          .then((result) => {
+          .then(result => {
             dispatch(fetchCodexSuccess(result))
           })
           .catch(err => dispatch(fetchCodexFailure(err)))
@@ -55,7 +76,7 @@ export default function create(
         dispatch(fetchSpellsStarted())
         return spellService.getSpells(filter)
           .then(result => dispatch(fetchSpellsSuccess(result)))
-          .catch(ex => dispatch(fetchSpellsFailure(ex)))
+          .catch(err => dispatch(fetchSpellsFailure(err)))
       }
     },
 
@@ -64,7 +85,7 @@ export default function create(
         dispatch(fetchSpellbooksStarted())
         return spellbookService.getSpellbooks(filter)
           .then(result => dispatch(fetchSpellbooksSuccess(result)))
-          .catch(ex => dispatch(fetchSpellbooksFailure(ex)))
+          .catch(err => dispatch(fetchSpellbooksFailure(err)))
       }
     },
 
@@ -73,10 +94,26 @@ export default function create(
         dispatch(createNewSpellbookStarted())
         return spellbookService.createNewSpellbook()
           .then(result => dispatch(createNewSpellbookSuccess(result)))
-          .catch(ex => dispatch(createNewSpellbookFailure(ex)))
+          .catch(err => dispatch(createNewSpellbookFailure(err)))
       }
     }
   }
+}
+//Login async private action creators
+function loginStarted() {
+  return {type: LOGIN_STARTED}
+}
+
+function loginSuccess() {
+  return {type: LOGIN_SUCCESS}
+}
+
+function requireUserAuth() {
+  return {type: USER_REQUIRE_AUTH}
+}
+
+function loginFailure(error) {
+  return {type: LOGIN_FAILURE, error: error}
 }
 
 //Fetch codex async private action creators

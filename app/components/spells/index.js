@@ -25,8 +25,7 @@ class Spells extends React.Component {
 
   render (){
     return <div>
-      <p>Spells</p>
-      <Filter filter={this.props.spells.filter} onSearch={this.handleSpellSearch}/>
+      <Filter actions={this.props.actions} filter={this.props.spells.filter} onSearch={this.handleSpellSearch}/>
       <SpellList spells={this.props.spells.result} />
     </div>
   }

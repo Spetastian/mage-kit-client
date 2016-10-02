@@ -1,5 +1,6 @@
 body, #root, .root-container{
     height: 100%;
+    background-color: #f8f8f8;
 }
 
 .tabs {
@@ -47,6 +48,7 @@ body, #root, .root-container{
     display: block;
 }
 
+/*
 input {
   border: 2pt solid lightgrey;
   padding: 4pt;
@@ -55,18 +57,60 @@ input {
   height: 32pt;
   font-size: 22pt;
 }
+*/
 
-.main-menu-holder {
+.top-header {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   background-color: white;
   width: 100%;
   position: fixed;
   padding-bottom:4pt;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  width:auto;
+  text-align: center;
+  height: 4rem;
+}
+
+main {
+  background-color: #fff;
+  margin-top: 5rem;
+}
+
+main, .top-header{
+  box-shadow: rgba(0,0,0,0.1) 0 1px 4px 0;
+}
+
+@media screen and (min-width: 800px) {
+    main, .top-header nav {
+        margin-left: 5.55555%;
+        margin-right: 5.55555%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main, .top-header nav {
+        margin-left: 8.333325%;
+        margin-right: 8.333325%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    main, .top-header nav {
+        margin-left: 11.1111%;
+        margin-right: 11.1111%;
+    }
 }
 
 .codex-search-holder {
-  background-color: white;
-  width: 100%;
-  position: fixed;
   margin-top: 24pt;
   padding-bottom:4pt;
 }

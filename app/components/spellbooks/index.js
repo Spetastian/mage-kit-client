@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import SpellbookList from "./spellbook-list"
 import Filter from "./filter"
 import actionCreator from '../../redux/actions/action-creator'
+import AuthenticationRequired from '../shared/authentication-required'
 
 class Spellbooks extends React.Component {
 
@@ -14,8 +15,12 @@ class Spellbooks extends React.Component {
     this.handleCreateNewSpellbook = this.handleCreateNewSpellbook.bind(this)
   }
 
+  componentWillMount(){
+
+    console.log("Spellbooks index will mount", this.props)
+  }
+
   componentDidMount() {
-    console.log(this.props.spellbooks)
     this.props.actions.fetchSpellbooksRequest(this.props.spellbooks.filter)
   }
 
@@ -28,16 +33,16 @@ class Spellbooks extends React.Component {
   }
 
   render (){
-    return <div>
-      <p>Spellbooks</p>
+    return <AuthenticationRequired user={this.props.user} history={this.props.history}>
+      <div>
       <Filter filter={this.props.spellbooks.filter} onSearch={this.handleSpellbookSearch}/>
       <SpellbookList spellbooks={this.props.spellbooks.result} onCreateNewSpellbook={this.handleCreateNewSpellbook} />
     </div>
+    </AuthenticationRequired>
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state.toJS())
   return state.toJS()
 }
 

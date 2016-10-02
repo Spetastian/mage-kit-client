@@ -6,6 +6,8 @@ const attacks = require('../data/spells/attacks')
 const conjurations = require('../data/spells/conjurations')
 const creatures = require('../data/spells/creatures')
 const incantations = require('../data/spells/incantations')
+const authenticationRequired = require('../middleware/authentication-required')
+const jwt = require('jsonwebtoken')
 const StandardResultLimit = 10
 const checksum = "abc123"
 
@@ -19,7 +21,30 @@ const idGenerator = idMaker()
 
 const spellbooks = []
 
-router.get("/spellbooks", (req, res) => {
+router.post("/authenticate", (req, res) => {
+  const username = req.body.username
+  const password = req.body.password
+
+  if(username.toLowerCase() === "sebbe" && password === "sebbe123"){
+    const token = jwt.sign(user, app.get('jwtSecret'), {
+      expiresInMinutes: 1440 // expires in 24 hours
+    });
+    return res.json({
+      success: true,
+      message: 'Enjoy your token!',
+      token: token
+    });
+  }
+
+  return res.json({
+    success: false,
+    message: 'Enjoy your token!',
+    token: token
+  });
+
+})
+
+router.get("/spellbooks", authenticationRequired, (req, res) => {
 
   const limit = req.query.limit || StandardResultLimit
   const searchText = req.query.searchText || ''
@@ -30,7 +55,7 @@ router.get("/spellbooks", (req, res) => {
     }))
 })
 
-router.post("/spellbooks", (req, res) => {
+router.post("/spellbooks", authenticationRequired, (req, res) => {
   const newSpellbook = {
     id : 4,
     name : "",
