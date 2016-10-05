@@ -8,6 +8,9 @@ export const FETCH_CODEX_STARTED = 'mage-kit-client/FETCH_CODEX_STARTED'
 export const FETCH_CODEX_SUCCESS = 'mage-kit-client/FETCH_CODEX_SUCCESS'
 export const FETCH_CODEX_FAILURE = 'mage-kit-client/FETCH_CODEX_FAILURE'
 
+//Logout user action
+export const USER_LOGOUT = 'mage-kit-client/USER_LOGOUT'
+
 //Search codex actions
 export const SEARCH_CODEX_SUCCESS = 'mage-kit-client/SEARCH_CODEX_SUCCESS'
 export const SEARCH_CODEX_FAILURE = 'mage-kit-client/SEARCH_CODEX_FAILURE'

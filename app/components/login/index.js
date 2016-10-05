@@ -17,6 +17,9 @@ class Login extends React.Component {
   }
 
   render (){
+    if(this.props.user.authenticated)
+      this.props.history.goBack()
+
       return <div>
         <LoginForm onLogin={this.handleLogin} />
       </div>

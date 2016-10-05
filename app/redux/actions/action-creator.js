@@ -2,7 +2,7 @@ import {
     LOGIN_STARTED,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    USER_REQUIRE_AUTH,
+    USER_LOGOUT,
     FETCH_CODEX_STARTED,
     FETCH_CODEX_SUCCESS,
     FETCH_CODEX_FAILURE,
@@ -33,6 +33,13 @@ export default function create(
   authService = new AuthService(clientCache)){
 
   return {
+
+    checkAuthentication(){
+      if(authService.hasToken()){
+        return loginSuccess()
+      }
+    },
+
     loginRequest(username, password){
       return dispatch => {
         dispatch(loginStarted())
@@ -42,6 +49,11 @@ export default function create(
           })
           .catch(err => dispatch(loginFailure(err)))
       }
+    },
+
+    logout(){
+      authService.removeToken()
+      return logoutUser()
     },
 
     promptAuthentication(){
@@ -126,12 +138,12 @@ function loginSuccess() {
   return {type: LOGIN_SUCCESS}
 }
 
-function requireUserAuth() {
-  return {type: USER_REQUIRE_AUTH}
-}
-
 function loginFailure(error) {
   return {type: LOGIN_FAILURE, error: error}
+}
+
+function logoutUser(){
+  return {type: USER_LOGOUT}
 }
 
 //Fetch codex async private action creators

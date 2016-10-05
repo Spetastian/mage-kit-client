@@ -2,8 +2,6 @@
 import React from 'react';
 import Router from 'react-router';
 
-//import AuthStore from 'stores/AuthStore';
-
 export default class AuthenticationRequired extends React.Component {
 
   constructor(props){

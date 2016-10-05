@@ -23,6 +23,9 @@ class TopHeader extends React.Component {
                   <li><Link to="/spells">Spells</Link></li>
                   <li><Link to="/spellbooks">Spellbooks</Link></li>
                 </ul>
+                <ul className="user-actions">
+                  <li><a href="#" onClick={this.props.actions.logout}>Logout</a></li>
+                </ul>
             </nav>
             </header>
   }

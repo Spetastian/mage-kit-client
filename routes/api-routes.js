@@ -8,6 +8,7 @@ const creatures = require('../data/spells/creatures')
 const incantations = require('../data/spells/incantations')
 const authenticationRequired = require('../middleware/authentication-required')
 const jwt = require('jsonwebtoken')
+const config = require('../config')
 const StandardResultLimit = 10
 const checksum = "abc123"
 
@@ -24,11 +25,10 @@ const spellbooks = []
 router.post("/authenticate", (req, res) => {
   const username = req.body.username
   const password = req.body.password
-
+  console.log(req.cookies)
   if(username.toLowerCase() === "sebbe" && password === "sebbe123"){
-    const token = jwt.sign(user, app.get('jwtSecret'), {
-      expiresInMinutes: 1440 // expires in 24 hours
-    });
+    const user = {username : username}
+    const token = jwt.sign(user, config.secret);
     return res.json({
       success: true,
       message: 'Enjoy your token!',
@@ -38,8 +38,8 @@ router.post("/authenticate", (req, res) => {
 
   return res.json({
     success: false,
-    message: 'Enjoy your token!',
-    token: token
+    message: 'Authentication failed',
+    token: null
   });
 
 })
@@ -56,7 +56,7 @@ router.get("/spellbooks", authenticationRequired, (req, res) => {
 })
 
 router.post("/spellbooks", authenticationRequired, (req, res) => {
-  
+
   const newSpellbook = {
     id : 4,
     name : "",

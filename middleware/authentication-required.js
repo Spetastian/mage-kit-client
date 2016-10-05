@@ -1,4 +1,5 @@
 module.exports = function(req, res, next){
+  console.log(req.decodedAuthToken);
   if(req.decodedAuthToken){
     return next()
   }
