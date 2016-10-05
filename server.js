@@ -19,14 +19,9 @@ express()
     .use(webpackHotMiddleware(compiler))
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
-<<<<<<< HEAD
-    .use("/api", apiRoutes)
-    .get("/codex|spells|spellbooks", (req, res) => {
-=======
     .use(jwtParser)
     .use("/api", apiRoutes)
     .get("/login|codex|spells|spellbooks", (req, res) => {
->>>>>>> user-login
       res.sendFile(__dirname + '/static/index.html')
     })
     .listen(port, () => {
