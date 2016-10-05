@@ -18,4 +18,13 @@ export default class ClientCache {
     localStorage.setItem(key, JSON.stringify(value))
 
   }
+
+  setAuthToken(authToken){
+
+  }
+
+  getAuthToken(){
+    return {}
+  }
+
 }

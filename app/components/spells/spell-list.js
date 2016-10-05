@@ -7,6 +7,7 @@ export default class SpellList extends React.Component {
   render (){
 
     const spellList = this.props.spells.map((spell)=>{
+
       return <div className="thumbnail-container col-3">
               <Spell
                 key={spell.id}
