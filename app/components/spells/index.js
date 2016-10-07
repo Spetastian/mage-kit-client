@@ -13,10 +13,11 @@ class Spells extends React.Component {
   constructor(props){
     super(props)
     this.handleSpellSearch = this.handleSpellSearch.bind(this)
+    this.defaultFilterValue = {limit: 10, searchText: ""}
   }
 
   componentDidMount() {
-    this.props.actions.fetchSpellsRequest(this.props.spells.filter)
+    this.props.actions.fetchSpellsRequest(this.defaultFilterValue)
   }
 
   handleSpellSearch(filter = {}) {
