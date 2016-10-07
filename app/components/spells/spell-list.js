@@ -4,18 +4,18 @@ import Spell from './spell'
 
 export default class SpellList extends React.Component {
 
-  render (){
+    render (){
 
-    const spellList = this.props.spells.map((spell)=>{
+        const spellList = this.props.spells.map((spell,i)=>{
 
-      return <div className="thumbnail-container col-3">
-              <Spell
-                key={spell.id}
-                spell={spell}
+            return <div key={i} className="thumbnail-container col-3">
+                <Spell
+                    key={spell.id}
+                    spell={spell}
                 />
-              </div>
-    })
+            </div>
+        })
 
-    return  <div className="row">{spellList}</div>
-  }
+        return  <div className="row">{spellList}</div>
+    }
 }
