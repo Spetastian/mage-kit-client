@@ -11,7 +11,11 @@ const initialState = fromJS({
     fetching: false,
     ready: false,
     fail: false,
-    codexList: []
+    filter: {
+      limit: 10,
+      searchText: "",
+    },
+    codexList: [],
 })
 
 const codexReducer = (state = initialState, action) => {

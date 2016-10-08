@@ -58,7 +58,7 @@ router.get("/spellbooks", authenticationRequired, (req, res) => {
 router.post("/spellbooks", authenticationRequired, (req, res) => {
 
   const newSpellbook = {
-    id : 4,
+    id : idGenerator.next(),
     name : "",
     mage : "",
     totalPoints : 0

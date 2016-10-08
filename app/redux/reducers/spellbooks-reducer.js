@@ -13,6 +13,10 @@ const initialState = fromJS({
     creating: false,
     ready: false,
     fail: false,
+    filter: {
+      limit: 10,
+      searchText: ""
+    },
     result: []
 })
 

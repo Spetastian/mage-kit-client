@@ -16,6 +16,13 @@ class TopHeader extends React.Component {
   }
 
   render (){
+
+    let loginLogoutButton;
+    if(this.props.user.authenticated)
+      loginLogoutButton = <a href="#" onClick={this.props.actions.logout}>Logout</a>
+    else
+      loginLogoutButton = <Link to="/login">Login</Link>
+
       return <header className="top-header">
             <nav>
                 <ul className="tabs main-menu-holder">
@@ -23,8 +30,8 @@ class TopHeader extends React.Component {
                   <li><Link to="/spells">Spells</Link></li>
                   <li><Link to="/spellbooks">Spellbooks</Link></li>
                 </ul>
-                <ul className="user-actions">
-                  <li><a href="#" onClick={this.props.actions.logout}>Logout</a></li>
+                <ul className="tabs main-user-actions">
+                  <li>{loginLogoutButton}</li>
                 </ul>
             </nav>
             </header>

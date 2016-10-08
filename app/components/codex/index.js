@@ -13,10 +13,7 @@ class Codex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.actions.initCodexDataRequest({
-          limit: CodexSearchResultLimit,
-          searchText: ''
-        })
+        this.props.actions.initCodexDataRequest(this.props.codex.filter)
     }
 
     handleCodexSearch(searchText) {

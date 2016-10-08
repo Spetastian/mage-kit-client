@@ -14,7 +14,7 @@ export default class SpellbookService {
   }
 
   getSpellbooks(filter = {limit: 10, searchText: null}){
-    assert(filter.limit)
+    assert(filter.limit, "SpellbookService.getSpellbooks: filter.limit is undefined needs to be set")
 
     const spellbooksUrl = `${StandardBaseUrl}/spellbooks?limit=${filter.limit}&searchText=${filter.searchText}`
     return fetch(spellbooksUrl,

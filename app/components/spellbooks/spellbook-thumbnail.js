@@ -12,7 +12,7 @@ export default class SpellbookThumbnail extends React.Component {
               <span>{this.props.mage} - </span>
             </div>
             <div>
-              <span>Points left: {120-this.props.totalMana} </span><br/>
+              <span>Cost: {this.props.totalMana}/120 </span><br/>
             </div>
           </div>
         }

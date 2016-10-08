@@ -8,11 +8,6 @@ export default class AuthenticationRequired extends React.Component {
     super(props)
   }
 
-  componentWillMount () {
-    if(!this.props.user.authenticated)
-      this.props.history.push('/login')
-  }
-
   render () {
     if(this.props.user.authenticated){
       return (this.props.children)

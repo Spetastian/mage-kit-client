@@ -19,6 +19,7 @@ import {
     CREATE_NEW_SPELLBOOK_FAILURE,
 } from './action-types'
 
+import { routerMiddleware, push } from 'react-router-redux'
 import CodexService from '../../services/codex-service'
 import SpellService from '../../services/spell-service'
 import SpellbookService from '../../services/spellbook-service'
@@ -36,7 +37,14 @@ export default function create(
 
     checkAuthentication(){
       if(authService.hasToken()){
-        return loginSuccess()
+        return dispatch => {
+          dispatch(loginSuccess())
+        }
+      }
+      else{
+        return dispatch => {
+          dispatch(push('/login'))
+        }
       }
     },
 
@@ -54,10 +62,6 @@ export default function create(
     logout(){
       authService.removeToken()
       return logoutUser()
-    },
-
-    promptAuthentication(){
-      dispatch(requireUserAuth())
     },
 
     initCodexDataRequest(){

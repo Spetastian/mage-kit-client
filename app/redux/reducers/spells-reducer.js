@@ -15,7 +15,8 @@ const initialState = fromJS({
           {value: "conjurations", selected: false},
           {value: "attacks", selected: false}
         ],
-      limit: 10
+      limit: 10,
+      searchText: "",
     },
     result: []
 })
