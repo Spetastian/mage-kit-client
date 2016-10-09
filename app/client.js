@@ -4,7 +4,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory} from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import TopHeader from './components/common/top-header'
+import App from './components/app'
 import Codex from './components/codex'
 import Spells from './components/spells'
 import Spell from './components/spells/spell'
@@ -17,17 +17,6 @@ let store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store,{
     selectLocationState (state) {
       return state.get('routing').toJS();
-  }
-})
-
-const App = React.createClass({
-  render() {
-    return <div className="root-container">
-      <TopHeader />
-      <main>
-      {this.props.children}
-      </main>
-    </div>
   }
 })
 

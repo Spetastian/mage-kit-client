@@ -10,7 +10,7 @@ export default class SpellService {
   }
 
   getSpells(filter = {limit: 10, searchText: null}){
-    assert(filter.limit)
+    assert(filter.limit, "SpellService.getSpells: filter.limit is undefined needs to be set")
 
     const spellsUrl = `${StandardBaseUrl}/spells?limit=${filter.limit}&searchText=${filter.searchText}`
     return fetch(spellsUrl)

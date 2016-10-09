@@ -2,7 +2,7 @@ import assert from 'assert'
 const StandardBaseUrl = process.env.API_BASE_URL || '/api'
 const EmptySpellbook = {
   name: '',
-  wizard: '',
+  mage: '',
 }
 
 export default class SpellbookService {
@@ -14,28 +14,36 @@ export default class SpellbookService {
   }
 
   getSpellbooks(filter = {limit: 10, searchText: null}){
-    assert(filter.limit)
+    assert(filter.limit, "SpellbookService.getSpellbooks: filter.limit is undefined needs to be set")
 
     const spellbooksUrl = `${StandardBaseUrl}/spellbooks?limit=${filter.limit}&searchText=${filter.searchText}`
-    return fetch(spellbooksUrl)
-          .then(res => {
-              if(!res.ok)
-                throw new Error("Error fetching Spellbooks from api")
+    return fetch(spellbooksUrl,
+      {
+        headers: {'x-access-token' : this.cache.getAuthToken()}
+      })
+      .then(res => {
+          if(!res.ok)
+            throw new Error("Error fetching Spellbooks from api")
 
-                return res.json()
-          })
+            return res.json()
+      })
   }
 
   createNewSpellbook(){
 
     const createNewspellbookUrl = `${StandardBaseUrl}/spellbooks`
-    return fetch(createNewspellbookUrl, { method: 'POST', body: JSON.stringify(EmptySpellbook) })
-          .then(res => {
-              if(!res.ok)
-                throw new Error("Error fetching Spellbooks from api")
+    return fetch(createNewspellbookUrl,
+      {
+        method: 'POST',
+        body: JSON.stringify(EmptySpellbook),
+        headers: {'x-access-token' : this.cache.getAuthToken()}
+      })
+      .then(res => {
+          if(!res.ok)
+            throw new Error("Error fetching Spellbooks from api")
 
-                return res.json()
-          })
+            return res.json()
+      })
   }
 
 }

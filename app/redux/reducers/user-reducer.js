@@ -3,6 +3,7 @@ import {
   LOGIN_STARTED,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  USER_LOGOUT,
 } from '../actions/action-types'
 
 const initialState = fromJS({
@@ -29,6 +30,12 @@ const userReducer = (state = initialState, action) => {
         state.set('authenticating', false)
         state.set('authenticationFail', true)
       })
+
+      case USER_LOGOUT:
+        return state.withMutations(state => {
+          state.set('authenticating', false)
+          state.set('authenticated', false)
+        })
   }
 
   return state

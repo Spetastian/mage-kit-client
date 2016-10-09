@@ -24,9 +24,20 @@ export default class AuthService {
           if(!res.ok)
             throw new Error("Error authenticating user")
 
-            this.cache.saveAuthToken(res)
             return res.json()
+              .then(response =>
+                {this.cache.setAuthToken(response.token)})
       })
   }
 
+  hasToken(){
+    if(this.cache.getAuthToken()){
+      return true
+    }
+    return false
+  }
+
+  removeToken(){
+    this.cache.clearAuthToken()
+  }
 }

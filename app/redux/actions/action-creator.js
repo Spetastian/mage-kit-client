@@ -2,7 +2,7 @@ import {
     LOGIN_STARTED,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    USER_REQUIRE_AUTH,
+    USER_LOGOUT,
     FETCH_CODEX_STARTED,
     FETCH_CODEX_SUCCESS,
     FETCH_CODEX_FAILURE,
@@ -19,6 +19,7 @@ import {
     CREATE_NEW_SPELLBOOK_FAILURE,
 } from './action-types'
 
+import { routerMiddleware, push } from 'react-router-redux'
 import CodexService from '../../services/codex-service'
 import SpellService from '../../services/spell-service'
 import SpellbookService from '../../services/spellbook-service'
@@ -33,6 +34,20 @@ export default function create(
   authService = new AuthService(clientCache)){
 
   return {
+
+    checkAuthentication(){
+      if(authService.hasToken()){
+        return dispatch => {
+          dispatch(loginSuccess())
+        }
+      }
+      else{
+        return dispatch => {
+          dispatch(push('/login'))
+        }
+      }
+    },
+
     loginRequest(username, password){
       return dispatch => {
         dispatch(loginStarted())
@@ -44,8 +59,9 @@ export default function create(
       }
     },
 
-    promptAuthentication(){
-      dispatch(requireUserAuth())
+    logout(){
+      authService.removeToken()
+      return logoutUser()
     },
 
     initCodexDataRequest(){
@@ -126,12 +142,12 @@ function loginSuccess() {
   return {type: LOGIN_SUCCESS}
 }
 
-function requireUserAuth() {
-  return {type: USER_REQUIRE_AUTH}
-}
-
 function loginFailure(error) {
   return {type: LOGIN_FAILURE, error: error}
+}
+
+function logoutUser(){
+  return {type: USER_LOGOUT}
 }
 
 //Fetch codex async private action creators

@@ -16,10 +16,9 @@ export default class SpellbookList extends React.Component {
 
   render (){
 
-    const spellbookList = this.props.spellbooks.map((spellbook)=>{
-      return <div className="thumbnail-container col-3">
+    const spellbookList = this.props.spellbooks.map((spellbook, i)=>{
+      return <div key={i} className="thumbnail-container col-3">
               <SpellbookThumbnail
-                key={spellbook.id}
                 name={spellbook.name}
                 mage={spellbook.mage}
                 totalMana={spellbook.totalMana}

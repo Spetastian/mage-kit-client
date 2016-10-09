@@ -1,4 +1,5 @@
 import assert from 'assert'
+import cookies from 'cookies-js'
 
 export default class ClientCache {
   getObject(key){
@@ -20,11 +21,17 @@ export default class ClientCache {
   }
 
   setAuthToken(authToken){
+    assert(authToken)
 
+    cookies.set('authToken', authToken)
   }
 
   getAuthToken(){
-    return {}
+    return cookies.get('authToken')
+  }
+
+  clearAuthToken(){
+    cookies.expire('authToken')
   }
 
 }

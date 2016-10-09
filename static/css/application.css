@@ -80,6 +80,14 @@ input {
   height: 4rem;
 }
 
+.main-menu-holder {
+  float: left;
+}
+
+.main-user-actions {
+  float: right;
+}
+
 main {
   background-color: #fff;
   margin-top: 5rem;
